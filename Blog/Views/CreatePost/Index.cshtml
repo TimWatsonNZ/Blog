@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+<script type="text/javascript" src="~/app/createPost.js"></script>
+}
+
+@section styles{
+    <style>
+		.mainContent{
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			top: 50px;
+			padding-top:10px;
+			padding-left:20px;
+            width: 80%;
+		}
+
+		.rightSidebar{
+			position: absolute;
+			left: 80%;
+			right: 0px;
+			bottom: 0px;
+			top: 50px;
+			width: 20%;
+		}		
+
+        .createTitleContainer{
+
+        }
+
+        .createTitle {
+            font-weight: 600;
+            font-size: 28px;
+            border: none;
+            font-family: Merriweather;
+            color: #2e4453;
+            resize:none;
+        }
+
+        .topbar{
+            text-align:center;
+        }
+
+		.createContent{
+			resize:none;
+			width:100%;
+			height:100%;
+		}
+    </style>
+}
+
+<div class="window" style="width:100%;">
+    <div class="mainContent">
+        <div class="topbar">
+            <div>
+                NEW POST
+            </div>
+        </div>
+		
+
+        <div class="createTitleContainer">
+            <textarea type="text" id="title" class="createTitle" rows="1" placeholder=" Title"></textarea>
+        </div>
+        <div style="height:90%;">
+            <textarea id="content" class="createContent" placeholder=" Content"></textarea>
+        </div>
+        
+
+        <div>
+            <label id="message"></label>
+        </div>
+    </div>
+    <div class="rightSidebar">
+        <div style="padding:20px;">
+            <button id="createNew">Create</button>
+        </div>
+    </div>
+</div>

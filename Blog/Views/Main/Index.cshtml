@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript" src="~/app/allPosts.js"></script>
+}
+
+@section styles{
+	<style>
+        .mainContent{
+			position: absolute;
+			left: 0px;
+			right: 0px;
+			bottom: 0px;
+			top: 50px;
+			padding-top:10px;
+			padding-left:20px;
+            width: 80%;
+		}
+
+		.rightSidebar{
+			position: absolute;
+			left: 80%;
+			right: 0px;
+			bottom: 0px;
+			top: 50px;
+			width: 20%;
+		}		
+	</style>
+}
+
+<div class="window">
+	<div class="rightSidebar">
+        <div>
+            <div>
+                SEARCH
+            </div>
+
+            <div>
+                DATES
+            </div>
+
+            <div>
+                TAGS
+            </div>
+
+            <div>
+                CATEGORIES
+            </div>
+        </div>
+	</div>
+    <div class="mainContent">
+        <div class="post">
+            <div>
+                <div class="postInfo">
+                    <div>
+                        POST TITLE
+                    </div>
+                        
+                    <div>
+                        POST DATE
+                    </div>
+
+                    <div>
+                        POST TAGS
+                    </div>
+                </div>
+
+                <div class="postContent">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="postContainer" class="container body-content"></div>
