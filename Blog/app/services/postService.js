@@ -2,16 +2,10 @@
 function postService($) {
     var self = this;
 
-    self.base = "/api/post/";
+    self.base = "/api/blogpost/";
 
     function getLatestPost() {
-        $.get(self.base + "getLatest", function (data) {
-            return new returnWrapper(data);
-        })
-        .fail(function (response) {
-            console.log("Error on getLatestPost");
-            return new returnWrapper(null, true, ErrorTypes.HttpError, response);
-        })
+        return $.get(self.base + "getLatest").promise();
     }
 
     function createPost(postModel) {

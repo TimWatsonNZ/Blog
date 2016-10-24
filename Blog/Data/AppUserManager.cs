@@ -20,7 +20,6 @@ namespace Blog.Data
         public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
         {
             var manager = new AppUserManager(new UserStore<AppUser>(context.Get<DbContext>()));
-
             return manager;
         }
     }

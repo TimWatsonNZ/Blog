@@ -6,11 +6,11 @@ using System.Web.Http;
 
 namespace Blog.Controllers
 {
-    public class PostController : ApiController
+    public class BlogPostController : ApiController
     {
         private IPostRepository _postRepo;
 
-        public PostController(IPostRepository repo)
+        public BlogPostController(IPostRepository repo)
         {
             _postRepo = repo;
         }
@@ -23,8 +23,12 @@ namespace Blog.Controllers
         public void Post([FromBody]BlogPost post)
         {
             post.Created = DateTime.Now;
-
             _postRepo.SavePost(post);
+        }
+
+
+        public BlogPost GetLatest() {
+            return _postRepo.GetLatestPost();
         }
     }
 }

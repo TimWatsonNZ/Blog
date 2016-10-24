@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace Blog.Controllers
 {
-    public class CreatePostController : Controller
+    [Authorize]
+    public class NewPostController : Controller
     {
         // GET: CreatePost
         public ActionResult Index()

@@ -225,8 +225,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\CreatePostController.cs" />
-    <Compile Include="Api\PostController.cs" />
+    <Compile Include="Controllers\NewPostController.cs" />
+    <Compile Include="Api\BlogPostController.cs" />
     <Compile Include="Api\ValuesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -321,7 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

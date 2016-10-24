@@ -68,7 +68,7 @@ namespace Blog.Controllers
         {
             if(string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("index", "home");
+                return Url.Action("index", "Main");
             }
 
             return returnUrl;
