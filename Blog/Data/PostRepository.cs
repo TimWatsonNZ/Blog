@@ -8,9 +8,9 @@ namespace Blog.Data
 {
     public class PostRepository : IPostRepository
     {
-        private readonly Context _context;
+        private readonly DbContext _context;
 
-        public PostRepository(Context context)
+        public PostRepository(DbContext context)
         {
             _context = context;
         }

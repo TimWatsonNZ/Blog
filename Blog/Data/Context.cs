@@ -7,13 +7,12 @@ using System.Web;
 
 namespace Blog.Data
 {
-    public class Context : DbContext
+    public class DbContext : System.Data.Entity.DbContext
     {
-        public Context() : base("DefaultConnection")
+        public DbContext() : base("DefaultConnection")
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
-
         }
 
         public DbSet<BlogPost> Posts { get; set; }
