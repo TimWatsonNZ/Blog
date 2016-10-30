@@ -229,12 +229,17 @@
     <Compile Include="Api\BlogPostController.cs" />
     <Compile Include="Api\ValuesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Migrations\201610300909436_v1.0.2.cs" />
+    <Compile Include="Migrations\201610300909436_v1.0.2.Designer.cs">
+      <DependentUpon>201610300909436_v1.0.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BlogPostTag.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Data\AppUserManager.cs" />
     <Compile Include="Data\Context.cs" />
-    <Compile Include="Data\IPostRepository.cs" />
-    <Compile Include="Data\PostRepository.cs" />
+    <Compile Include="Data\IBlogPostRepository.cs" />
+    <Compile Include="Data\BlogPostRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +273,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Migrations\Sql\v1.0.2-Up.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -315,9 +323,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Views\CreatePost\Index.cshtml" />
+    <Content Include="Views\NewPost\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedOut.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610191004157_1.0.1.resx">
       <DependentUpon>201610191004157_1.0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610300909436_v1.0.2.resx">
+      <DependentUpon>201610300909436_v1.0.2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

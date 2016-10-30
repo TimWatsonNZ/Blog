@@ -51,7 +51,43 @@
         });
     }
 
-    getLatestPost();
+    function loadPageOfPosts() {
+        var call = self.postService.loadPageOfPosts();
+
+        call.done(function (posts) {
+            posts.forEach(function (post) {
+                var content = "<div class='post'>" +
+                                            "<div>" +
+                                                "<div class='postInfo'>" +
+                                                    "<div>" +
+                                                        "{Title}" +
+                                                    "</div>" +
+
+                                                    "<div>" +
+                                                        "{Date}" +
+                                                    "</div>" +
+
+                                                    "<div>" +
+                                                        "{Tags}" +
+                                                    "</div>" +
+                                                "</div>" +
+
+                                                "<div class='postContent'>" +
+                                                    "{Content}" +
+                                                "</div>" +
+                                            "</div>" +
+                                        "</div>" +
+                                        "<hr>";
+                content = content.replace(/{Title}/g, post.title)
+                                 .replace(/{Date}/g, post.created)
+                                 .replace(/{Tags}/g, post.tags)
+                                 .replace(/{Content}/g, post.content)
+                self.mainContent.append(content);
+            });
+        });
+    }
+
+    loadPageOfPosts();
 }
 
 var allPosts = allPostsController($);

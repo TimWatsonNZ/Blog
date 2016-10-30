@@ -16,6 +16,10 @@ function postService($) {
         return $.post(self.base + "post", postModel).promise();
     }
 
+    function loadPageOfPosts() {
+        return $.get(self.base + "getPageOfPosts").promise();
+    }
+
     function updatePost(postModel) {
         if (postModel == null || !postModel.isValid()) {
             return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
@@ -40,6 +44,7 @@ function postService($) {
     return {
         createPost: createPost,
         getLatestPost: getLatestPost,
-        getPosts: getPosts
+        getPosts: getPosts,
+        loadPageOfPosts: loadPageOfPosts
     };
 };

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Blog.Data
 {
-    public interface IPostRepository
+    public interface IBlogPostRepository
     {
         void SavePost(BlogPost post);
 
@@ -15,6 +15,9 @@ namespace Blog.Data
         BlogPost GetLatestPost();
 
         IEnumerable<BlogPost> GetPosts();
-        
+
+        IEnumerable<BlogPost> GetLatestNPosts(int n);
+
+        IEnumerable<BlogPost> GetPageOfPosts();
     }
 }

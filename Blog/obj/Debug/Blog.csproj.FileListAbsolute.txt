@@ -89,3 +89,5 @@ C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog\Blog\obj\Debug\Blog.cspr
 C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog - Copy before I split the project. I fucked my source control so I have to do this instead\Blog\obj\Debug\Blog.dll
 C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog - Copy before I split the project. I fucked my source control so I have to do this instead\Blog\obj\Debug\Blog.pdb
 C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog\Blog\obj\Debug\Blog.Migrations._101.resources
+C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog\Blog\obj\Debug\Blog.Migrations.v102.resources
+C:\Users\OEM\Documents\Visual Studio 2015\Projects\Blog\Blog\bin\Migrations\Sql\v1.0.2-Up.sql

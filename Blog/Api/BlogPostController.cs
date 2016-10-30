@@ -8,9 +8,9 @@ namespace Blog.Controllers
 {
     public class BlogPostController : ApiController
     {
-        private IPostRepository _postRepo;
+        private IBlogPostRepository _postRepo;
 
-        public BlogPostController(IPostRepository repo)
+        public BlogPostController(IBlogPostRepository repo)
         {
             _postRepo = repo;
         }
@@ -25,10 +25,20 @@ namespace Blog.Controllers
             post.Created = DateTime.Now;
             _postRepo.SavePost(post);
         }
-
-
-        public BlogPost GetLatest() {
+        
+        public BlogPost GetLatest() 
+        {
             return _postRepo.GetLatestPost();
+        }
+
+        public IEnumerable<BlogPost> GetLatestN(int n) 
+        {
+            return _postRepo.GetLatestNPosts(n);
+        }
+
+        public IEnumerable<BlogPost> GetPageOfPosts()
+        {
+            return _postRepo.GetPageOfPosts();
         }
     }
 }
