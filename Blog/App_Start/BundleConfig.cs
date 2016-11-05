@@ -27,6 +27,7 @@ namespace Blog
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                 "~/app/util.js",
                 "~/app/postModel.js",
+                "~/scripts/moment.min.js",
                 "~/app/services/postService.js"
                 ));
         }

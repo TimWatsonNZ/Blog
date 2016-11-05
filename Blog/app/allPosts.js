@@ -60,7 +60,7 @@
                                             "<div>" +
                                                 "<div class='postInfo'>" +
                                                     "<div>" +
-                                                        "{Title}" +
+                                                        "<b>{Title}</b>" +
                                                     "</div>" +
 
                                                     "<div>" +
@@ -71,7 +71,7 @@
                                                         "{Tags}" +
                                                     "</div>" +
                                                 "</div>" +
-
+                                                "<br />" + 
                                                 "<div class='postContent'>" +
                                                     "{Content}" +
                                                 "</div>" +
@@ -79,8 +79,8 @@
                                         "</div>" +
                                         "<hr>";
                 content = content.replace(/{Title}/g, post.title)
-                                 .replace(/{Date}/g, post.created)
-                                 .replace(/{Tags}/g, post.tags)
+                                 .replace(/{Date}/g, moment(post.created).format("MMMM Do YY"))
+                                 .replace(/{Tags}/g, post.tags || "No tags")
                                  .replace(/{Content}/g, post.content)
                 self.mainContent.append(content);
             });
