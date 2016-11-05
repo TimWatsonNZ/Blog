@@ -25,10 +25,26 @@ namespace Blog.Data
             return _context.Posts.FirstOrDefault(p => p.BlogPostId == id);
         }
 
-        public void SavePost(BlogPost post)
+        public int SavePost(BlogPost post)
         {
             _context.Posts.Add(post);
             _context.SaveChanges();
+
+            return post.BlogPostId;
+        }
+
+        public bool UpdatePost(BlogPost post)
+        {
+            var toUpdate = _context.Posts.FirstOrDefault(p => p.BlogPostId == post.BlogPostId);
+
+            if (toUpdate == null)
+                return false;
+
+            toUpdate.Content = post.Content;
+
+            _context.SaveChanges();
+
+            return true;
         }
 
         public IEnumerable<BlogPost> GetPosts()

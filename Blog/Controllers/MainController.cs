@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Blog.Controllers
 {
+    [AllowAnonymous]
     public class MainController : Controller
     {
         // GET: Main

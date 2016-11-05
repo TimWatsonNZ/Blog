@@ -8,7 +8,9 @@ namespace Blog.Data
 {
     public interface IBlogPostRepository
     {
-        void SavePost(BlogPost post);
+        int SavePost(BlogPost post);
+
+        bool UpdatePost(BlogPost post);
 
         BlogPost GetPost(int id);
 

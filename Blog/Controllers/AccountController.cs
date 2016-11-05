@@ -55,7 +55,7 @@ namespace Blog.Controllers
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
 
-            authManager.SignOut("ApplicationCooke");
+            authManager.SignOut("ApplicationCookie");
             return RedirectToAction("LoggedOut", "Account");
         }
 

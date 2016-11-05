@@ -13,14 +13,15 @@ namespace Blog.Models
         [Key]
         public int BlogPostTagId { get; set; }
 
+        [ForeignKey("BlogPost")]
         public int BlogPostId { get; set; }
 
+        [ForeignKey("Tag")]
         public int TagId { get; set; }
 
-        [ForeignKey("BlogPostId")]
+        
         public virtual BlogPost BlogPost { get; set; }
 
-        [ForeignKey("TagId")]
         public virtual Tag Tag{ get; set; }
     }
 }

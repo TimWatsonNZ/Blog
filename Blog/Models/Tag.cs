@@ -12,7 +12,6 @@ namespace Blog.Models
     {
         [Key]
         public int TagId { get; set; }
-        public List<Category> Categories { get; set; }
         public string Name { get; set; }
     }
 }

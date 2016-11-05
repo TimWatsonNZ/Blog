@@ -12,10 +12,15 @@ function postService($) {
         if (postModel == null || !postModel.isValid()) {
             return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
         }
+        var deferred = $.Deferred();
 
-        return $.post(self.base + "post", postModel).promise();
+        $.post(self.base + "post", postModel, function (data) {
+            deferred.resolve(data)
+        });
+
+        return deferred;
     }
-
+     
     function loadPageOfPosts() {
         return $.get(self.base + "getPageOfPosts").promise();
     }
@@ -25,26 +30,41 @@ function postService($) {
             return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
         }
 
-        $.post(
-            self.base + "post",
-            postModel,
-        function (data) {
-            return new returnWrapper(data);
-        })
-        .fail(function (response) {
-            console.log("Error on createPost");
-            return new returnWrapper(null, true, ErrorTypes.HttpError, response);
+        var deferred = $.Deferred();
+
+        $.put(self.base + "put", postModel, function () {
+            deferred.resolve();
         });
+
+        return deferred;
     }
 
     function getPosts() {
         return $.get(self.base + "GetPosts").promise();
     }
 
+    $.put = function (url, data, callback, type) {
+
+        if ($.isFunction(data)) {
+            type = type || callback,
+            callback = data,
+            data = {}
+        }
+
+        return $.ajax({
+            url: url,
+            type: 'PUT',
+            success: callback,
+            data: data,
+            contentType: type
+        });
+    }
+
     return {
         createPost: createPost,
         getLatestPost: getLatestPost,
         getPosts: getPosts,
-        loadPageOfPosts: loadPageOfPosts
+        loadPageOfPosts: loadPageOfPosts,
+        updatePost: updatePost
     };
 };

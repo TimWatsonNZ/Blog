@@ -20,10 +20,16 @@ namespace Blog.Controllers
             return _postRepo.GetPosts();
         }
 
-        public void Post([FromBody]BlogPost post)
+        public int Post([FromBody]BlogPost post)
         {
             post.Created = DateTime.Now;
-            _postRepo.SavePost(post);
+            return _postRepo.SavePost(post);
+        }
+
+        public bool Put([FromBody]BlogPost post)
+        {
+            _postRepo.UpdatePost(post);
+            return true;
         }
         
         public BlogPost GetLatest() 

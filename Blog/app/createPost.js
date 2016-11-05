@@ -3,6 +3,9 @@ function createPostBinder($) {
     var self = this;
 
     this.postService = new postService($);
+    this.hasCreated = false;
+    this.postId = -1;
+    this.htmlContent = "";
 
     this.title = $("#title");
     this.content = $("#content");
@@ -11,16 +14,44 @@ function createPostBinder($) {
 
     this.createPost = function(){
         var createResponse = self.postService.createPost(self.createModel());
-       // message.text(createResponse);
+
+        createResponse.then(function (data) {
+            alert("Post successful");
+            self.postId = data;
+            self.hasCreated = true;
+
+            self.changeToUpdate();
+        });
     }
 
-    this.createModel = function(){
-        var model = new postModel(self.title[0].value, self.content[0].value, [], "");
-        return model;
+    this.updatePost = function () {
+        var updateResponse = self.postService.updatePost(self.createModel());
+
+        updateResponse.then(function (data) {
+            alert("Update successful");
+        });
     }
 
+    this.createModel = function () {
+        if (self.postId > 0) {
+            return new postModel(self.title[0].value, self.content[0].value, [], "", self.postId);
+        }
+        
+        return new postModel(self.title[0].value, self.content[0].value, [], "");
+    }
 
-    this.createBtn.click(this.createPost);
+    this.changeToUpdate = function () {
+        self.createBtn.text("Update");
+
+        self.createBtn.unbind('click');
+        self.createBtn.click(this.updatePost);
+    }
+
+    this.init = function(){
+        this.createBtn.click(this.createPost);
+    }
+
+    self.init();
 }
 
 var createPost = new createPostBinder($);

@@ -229,9 +229,13 @@
     <Compile Include="Api\BlogPostController.cs" />
     <Compile Include="Api\ValuesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Migrations\201610300909436_v1.0.2.cs" />
-    <Compile Include="Migrations\201610300909436_v1.0.2.Designer.cs">
-      <DependentUpon>201610300909436_v1.0.2.cs</DependentUpon>
+    <Compile Include="Migrations\201611020943119_v1.0.2.0.cs" />
+    <Compile Include="Migrations\201611020943119_v1.0.2.0.Designer.cs">
+      <DependentUpon>201611020943119_v1.0.2.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611021010052_v1.0.2.1.cs" />
+    <Compile Include="Migrations\201611021010052_v1.0.2.1.Designer.cs">
+      <DependentUpon>201611021010052_v1.0.2.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BlogPostTag.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -346,8 +350,11 @@
     <EmbeddedResource Include="Migrations\201610191004157_1.0.1.resx">
       <DependentUpon>201610191004157_1.0.1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610300909436_v1.0.2.resx">
-      <DependentUpon>201610300909436_v1.0.2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611020943119_v1.0.2.0.resx">
+      <DependentUpon>201611020943119_v1.0.2.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611021010052_v1.0.2.1.resx">
+      <DependentUpon>201611021010052_v1.0.2.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace Blog.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class v102 : IMigrationMetadata
+    public sealed partial class v1020 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(v102));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v1020));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610300909436_v1.02"; }
+            get { return "201611020943119_v1.0.2.0"; }
         }
         
         string IMigrationMetadata.Source
