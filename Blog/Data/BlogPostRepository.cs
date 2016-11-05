@@ -71,14 +71,14 @@ namespace Blog.Data
             var totalNumberOfPosts = _context.Posts.Count();
             
             var charactersToFillPage = charsInLine * lineNumber;
-            int charCount = posts.Sum(post => post.Content.Length);
+            int charCount = posts.Sum(post => post.Content?.Length ?? 0);
 
             //  Yes this is inefficient but I can't figure out a better way atm. Too sleepy.
             while(charCount < charactersToFillPage && postCount < totalNumberOfPosts)
             {
                 postCount++;
                 posts = GetLatestNPosts(postCount).ToList();
-                charCount = posts.Sum(post => post.Content.Length);
+                charCount = posts.Sum(post => post.Content?.Length ?? 0);
             }
 
             return posts;

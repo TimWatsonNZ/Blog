@@ -16,7 +16,7 @@ function createPostBinder($) {
         var createResponse = self.postService.createPost(self.createModel());
 
         createResponse.then(function (data) {
-            alert("Post successful");
+            self.message.text("Post created!");
             self.postId = data;
             self.hasCreated = true;
 
@@ -28,7 +28,7 @@ function createPostBinder($) {
         var updateResponse = self.postService.updatePost(self.createModel());
 
         updateResponse.then(function (data) {
-            alert("Update successful");
+            self.message.text("Post updated!");
         });
     }
 

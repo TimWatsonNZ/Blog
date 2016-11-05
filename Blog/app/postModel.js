@@ -9,6 +9,6 @@ function postModel(title, content, tags, category, id) {
     this.BlogPostId = id;
 
     self.isValid = function () {
-        return this.Title && this.Content;
+        return this.Title;
     }
 }

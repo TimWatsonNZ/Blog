@@ -20,40 +20,13 @@
             width: 80%;
 		}
 
-		.rightSidebar{
-			position: absolute;
-			left: 80%;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			width: 20%;
-		}		
-
-        .createTitleContainer{
-            width: 100%;
-        }
-
-        .createTitle {
-            font-weight: 600;
-            font-size: 28px;
-            border: none;
-            font-family: Merriweather;
-            color: #2e4453;
-            resize:none;
-        }
-
-        .topbar{
-            text-align:center;
-        }
-
-		.createContent{
-			resize:none;
-			width:100%;
-			height:100%;
-		}
-
-        .createControls{
-            text-align:left;
+        .rightSidebar {
+            position: absolute;
+            left: 80%;
+            right: 0px;
+            bottom: 0px;
+            top: 50px;
+            width: 20%;
         }
     </style>
 }
@@ -61,31 +34,23 @@
 <div class="window" style="width:100%;height:100%;">
     <div class="mainContent">
         <div class="topbar">
-            <div>
-                NEW POST
-            </div>
-            <div class="createControls">
-                <button>Text</button>
-                <button>Html</button>
+            <div> 
             </div>
         </div>
 		
-
-        <div class="createTitleContainer">
-            <textarea type="text" id="title" class="createTitle" rows="1" placeholder=" Title"></textarea>
+        <div class="titleContainer">
+            <div id="title" class="title"></div>
         </div>
         <div style="height:90%;">
-            <textarea id="content" class="createContent" placeholder="Content"></textarea>
+            <div id="content" class="content">
+                This will display posts by themselves.
+            </div>
         </div>
-        
 
         <div>
             <label id="message"></label>
         </div>
     </div>
     <div class="rightSidebar">
-        <div style="padding:20px;">
-            <button id="createNew">Create</button>
-        </div>
     </div>
 </div>

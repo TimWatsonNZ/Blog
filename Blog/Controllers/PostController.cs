@@ -10,6 +10,13 @@ namespace Blog.Controllers
     public class PostController : Controller
     {
         // GET: CreatePost
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        // GET: CreatePost
         public ActionResult Index()
         {
             return View();
