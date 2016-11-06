@@ -5,12 +5,15 @@ function createPostBinder($) {
     this.postService = new postService($);
     this.hasCreated = false;
     this.postId = -1;
-    this.htmlContent = "";
 
     this.title = $("#title");
-    this.content = $("#content");
+    this.iframe = $("#iframe");
+    this.textarea = $("#textarea");
+
     this.createBtn = $("#createNew");
     this.message = $("#message");
+
+    this.boldBtn = $("#bold");
 
     this.createPost = function(){
         var createResponse = self.postService.createPost(self.createModel());
@@ -34,10 +37,10 @@ function createPostBinder($) {
 
     this.createModel = function () {
         if (self.postId > 0) {
-            return new postModel(self.title[0].value, self.content[0].value, [], "", self.postId);
+            return new postModel(self.title[0].value, self.textarea[0].value, [], "", self.postId);
         }
         
-        return new postModel(self.title[0].value, self.content[0].value, [], "");
+        return new postModel(self.title[0].value, self.textarea[0].value, [], "");
     }
 
     this.changeToUpdate = function () {
@@ -47,8 +50,26 @@ function createPostBinder($) {
         self.createBtn.click(this.updatePost);
     }
 
+    this.onBoldClick = function () {
+        console.log("click");
+        var edit = document.getElementById("iframe").contentWindow;
+        edit.focus();
+        edit.document.execCommand("bold", false, "");
+    }
+
     this.init = function(){
         this.createBtn.click(this.createPost);
+        document.getElementById("iframe").contentWindow.document.designMode = "on";
+        document.getElementById("iframe").contentWindow.close();
+        
+        var edit = document.getElementById("iframe").contentWindow;
+        edit.focus();
+
+        self.boldBtn.click(self.onBoldClick);
+
+        setInterval(function () {
+            $("#textarea").val($("#iframe").contents().find("body").html());
+        }, 1000);
     }
 
     self.init();
