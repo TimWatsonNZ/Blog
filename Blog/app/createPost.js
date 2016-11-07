@@ -7,13 +7,16 @@ function createPostBinder($) {
     this.postId = -1;
 
     this.title = $("#title");
-    this.iframe = $("#iframe");
-    this.textarea = $("#textarea");
+    this.textContent = $("#textContent");
+    this.htmlContent = $("#htmlContent");
 
     this.createBtn = $("#createNew");
     this.message = $("#message");
 
     this.boldBtn = $("#bold");
+
+    this.textToHtmlContentIntervalId = -1;
+    this.htmlToTextContentIntervalId = -1;
 
     this.createPost = function(){
         var createResponse = self.postService.createPost(self.createModel());
@@ -37,10 +40,10 @@ function createPostBinder($) {
 
     this.createModel = function () {
         if (self.postId > 0) {
-            return new postModel(self.title[0].value, self.textarea[0].value, [], "", self.postId);
+            return new postModel(self.title[0].value, self.htmlContent[0].value, [], "", self.postId);
         }
         
-        return new postModel(self.title[0].value, self.textarea[0].value, [], "");
+        return new postModel(self.title[0].value, self.htmlContent[0].value, [], "");
     }
 
     this.changeToUpdate = function () {
@@ -51,25 +54,62 @@ function createPostBinder($) {
     }
 
     this.onBoldClick = function () {
-        console.log("click");
-        var edit = document.getElementById("iframe").contentWindow;
+        var edit = document.getElementById("textContent").contentWindow;
         edit.focus();
         edit.document.execCommand("bold", false, "");
     }
 
+    //  Copies the iframe contents to the text area contents
+    this.startTextToHtmlContentCopy = function () {
+        if (self.htmlToTextContentIntervalId > 0) {
+            clearInterval(self.htmlToTextContentIntervalId);
+            self.htmlToTextContentIntervalId = -1;
+        }
+
+        self.textToHtmlContentIntervalId = setInterval(function () {
+            $("#htmlContent").val($("#textContent").contents().find("body").html());
+        }, 1000);
+    }
+
+    //  Copies the text are contents to the iframe contents
+    this.startHtmlToTextContentCopy = function () {
+        if (self.textToHtmlContentIntervalId > 0) {
+            clearInterval(self.textToHtmlContentIntervalId);
+            self.textToHtmlContentIntervalId = -1;
+        }
+        
+        self.htmlToTextContentIntervalId = setInterval(function () {
+            $("#textContent").contents().find("body").html($("#htmlContent").val());
+        }, 1000);
+    }
+
+    function checkFocus() {
+        //  If iframe active
+        if (document.activeElement == document.getElementsByTagName("iframe")[0]) {
+            //  If copy function not already running.
+            if (self.textToHtmlContentIntervalId < 0) {
+                self.startTextToHtmlContentCopy();
+            }
+        }
+    }
+
     this.init = function(){
         this.createBtn.click(this.createPost);
-        document.getElementById("iframe").contentWindow.document.designMode = "on";
-        document.getElementById("iframe").contentWindow.close();
-        
-        var edit = document.getElementById("iframe").contentWindow;
-        edit.focus();
+        document.getElementById("textContent").contentWindow.document.designMode = "on";
+        document.getElementById("textContent").contentWindow.close();
+
+        $("#textContent").click(function () {
+            console.log("text has focus.");
+        });
+
+        $("#htmlContent").focus(this.startHtmlToTextContentCopy);
 
         self.boldBtn.click(self.onBoldClick);
+        
+        var edit = document.getElementById("textContent").contentWindow;
+        edit.focus();
 
-        setInterval(function () {
-            $("#textarea").val($("#iframe").contents().find("body").html());
-        }, 1000);
+        setInterval(checkFocus, 1000);
     }
 
     self.init();
