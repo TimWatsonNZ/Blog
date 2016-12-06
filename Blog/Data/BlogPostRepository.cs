@@ -47,11 +47,6 @@ namespace Blog.Data
             return true;
         }
 
-        public IEnumerable<BlogPost> GetPosts()
-        {
-            return _context.Posts;
-        }
-
         public IEnumerable<BlogPost> GetLatestNPosts(int n)
         {
             return _context.Posts.OrderByDescending(post => post.Created).Take(n);
@@ -82,6 +77,32 @@ namespace Blog.Data
             }
 
             return posts;
+        }
+
+        IEnumerable<BlogPost> IBlogPostRepository.GetPosts()
+        {
+            return _context.Posts.ToList();
+        }
+
+        public IEnumerable<BlogPost> GetPosts(string orderBy, int? count)
+        {
+            var posts = OrderBy(_context.Posts, orderBy);
+            if(count.HasValue)
+            {
+                posts = posts.Take(count.Value);
+            }
+
+            return posts;
+        }
+
+        private IQueryable<BlogPost> OrderBy(IQueryable<BlogPost> query, string orderBy)
+        {
+            if(orderBy.Equals("created"))
+            {
+                return query.OrderByDescending(post => post.Created);
+            }
+
+            return query;
         }
     }
 }

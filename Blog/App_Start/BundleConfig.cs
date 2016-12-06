@@ -8,7 +8,8 @@ namespace Blog
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            bundles.Add(new ScriptBundle("~/bundles/base").Include(
+                         "~/Scripts/angular.min.js",
                         "~/Scripts/jquery-{version}.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -26,10 +27,10 @@ namespace Blog
 
             bundles.Add(new ScriptBundle("~/bundles/main").Include(
                 "~/app/util.js",
-                "~/app/postModel.js",
-                "~/scripts/moment.min.js",
-                "~/app/services/postService.js"
-                ));
+                "~/app/mainApp.js",
+                "~/app/services/postService.js",
+                "~/app/controllers/mainController.js"
+            ));
         }
     }
 }

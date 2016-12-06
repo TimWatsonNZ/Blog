@@ -18,6 +18,8 @@ namespace Blog.Data
 
         IEnumerable<BlogPost> GetPosts();
 
+        IEnumerable<BlogPost> GetPosts(string orderBy, int? count);
+
         IEnumerable<BlogPost> GetLatestNPosts(int n);
 
         IEnumerable<BlogPost> GetPageOfPosts();

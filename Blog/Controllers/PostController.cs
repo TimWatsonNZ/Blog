@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,14 +11,21 @@ namespace Blog.Controllers
     public class PostController : Controller
     {
         // GET: CreatePost
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
+        
+        //  To update
+        public ActionResult Update(int id)
+        {
+            return View();
+        }
 
+        //  To view
         [AllowAnonymous]
-        // GET: CreatePost
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             return View();
         }

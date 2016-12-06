@@ -9,7 +9,7 @@ namespace Blog.Controllers
     [AllowAnonymous]
     public class MainController : Controller
     {
-        // GET: Main
+        // GET: Main    -> Just show blog titles as links.
         public ActionResult Index()
         {
             return View();

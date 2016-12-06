@@ -5,7 +5,7 @@
 }
 
 @section scripts{
-    <script type="text/javascript" src="~/app/allPosts.js"></script>
+    
 }
 
 @section styles{
@@ -36,29 +36,18 @@
 	</style>
 }
 
-<div class="window">
+<div class="window" ng-app="mainApp" ng-controller="mainController as vm">
 	<div class="rightSidebar">
         <div class="rightContainer">
-            @*<div>
-                SEARCH
-            </div>
-
-            <div>
-                DATES
-            </div>
-
-            <div>
-                TAGS
-            </div>
-
-            <div>
-                CATEGORIES
-            </div>*@
         </div>
 	</div>
     <div id="main">
         <div id="mainContent" class="mainContent">
-
+            <div ng-show="vm.errorMessage.hasError">{{vm.errorMessage.message}}</div>
+        
+            <div ng-repeat="post in vm.posts | orderBy: created">
+                <a><div ng-click="vm.gotoPost(post)">{{post.title}}</div></a>
+            </div>
         </div>
     </div>
 </div>

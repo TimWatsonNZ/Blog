@@ -21,13 +21,13 @@ function createPostBinder($) {
     this.createPost = function(){
         var createResponse = self.postService.createPost(self.createModel());
 
-        createResponse.then(function (data) {
-            self.message.text("Post created!");
-            self.postId = data;
-            self.hasCreated = true;
+        //createResponse.then(function (data) {
+        //    self.message.text("Post created!");
+        //    self.postId = data;
+        //    self.hasCreated = true;
 
-            self.changeToUpdate();
-        });
+        //    self.changeToUpdate();
+        //});
     }
 
     this.updatePost = function () {
@@ -67,6 +67,7 @@ function createPostBinder($) {
         }
 
         self.textToHtmlContentIntervalId = setInterval(function () {
+            console.log("text -> html")
             $("#htmlContent").val($("#textContent").contents().find("body").html());
         }, 1000);
     }
@@ -79,6 +80,7 @@ function createPostBinder($) {
         }
         
         self.htmlToTextContentIntervalId = setInterval(function () {
+            console.log("html -> Text")
             $("#textContent").contents().find("body").html($("#htmlContent").val());
         }, 1000);
     }
