@@ -1,8 +1,8 @@
 ﻿(function () {
-    var moduleId = "mainApp";
+    var moduleId = "service";
     var serviceId = "postService";
 
-    var app = angular.module(moduleId);
+    var app = angular.module(moduleId, []);
     app.factory(serviceId, ["$http", service]);
 
     function service($http) {

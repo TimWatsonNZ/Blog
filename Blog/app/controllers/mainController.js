@@ -1,5 +1,6 @@
 ﻿(function () {
-    var app = angular.module("mainApp")
+    "use strict";
+    var app = angular.module("mainApp");
     var controllerId = "mainController";
 
     app.controller(controllerId, ["postService", controller]);
@@ -34,7 +35,8 @@
         }
 
         self.gotoPost = function(post){
-            alert(post)
+            //  Navigate to post.
+            window.location = "/Post?id=" + post.BlogPostId;
         }
     }
 })();

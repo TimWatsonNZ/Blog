@@ -1,4 +1,5 @@
-﻿using Blog.ViewModels;
+﻿using Blog.Data;
+using Blog.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace Blog.Controllers
     [Authorize]
     public class PostController : Controller
     {
+        IBlogPostRepository _postRepo;
+        public PostController(IBlogPostRepository postRepository)
+        {
+            _postRepo = postRepository;
+        }
+
         // GET: CreatePost
         [HttpGet]
         public ActionResult Create()
@@ -25,9 +32,15 @@ namespace Blog.Controllers
 
         //  To view
         [AllowAnonymous]
-        public ActionResult Index(int id)
+        public ActionResult Index(int id = 1)
         {
-            return View();
+            //  Get post from controller.
+            var post = _postRepo.GetPost(id);
+            var previousPost = _postRepo.GetPrevious(post);
+            var nextPost = _postRepo.GetNext(post);
+
+            var blogVm = new BlogPostVm(post, previousPost, nextPost);
+            return View(post);
         }
     }
 }

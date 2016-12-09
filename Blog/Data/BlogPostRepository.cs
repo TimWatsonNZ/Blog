@@ -104,5 +104,21 @@ namespace Blog.Data
 
             return query;
         }
+
+        public BlogPost GetPrevious(BlogPost post)
+        {
+            var before = _context.Posts.Where(p => p.Created < post.Created)
+                                       .OrderByDescending(p => p.Created)
+                                       .Take(1).SingleOrDefault();
+            return before;
+        }
+
+        public BlogPost GetNext(BlogPost post)
+        {
+            var before = _context.Posts.Where(p => p.Created > post.Created)
+                                       .OrderBy(p => p.Created)
+                                       .Take(1).SingleOrDefault();
+            return before;
+        }
     }
 }

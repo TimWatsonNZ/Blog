@@ -5,7 +5,7 @@
 }
 
 @section scripts{
-    
+    @Scripts.Render("~/bundles/main");
 }
 
 @section styles{
@@ -46,7 +46,7 @@
             <div ng-show="vm.errorMessage.hasError">{{vm.errorMessage.message}}</div>
         
             <div ng-repeat="post in vm.posts | orderBy: created">
-                <a><div ng-click="vm.gotoPost(post)">{{post.title}}</div></a>
+                <a><div ng-click="vm.gotoPost(post)" style="cursor:pointer;">{{post.title}}</div></a>
             </div>
         </div>
     </div>

@@ -86,6 +86,10 @@
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
       <Private>True</Private>
@@ -272,6 +276,7 @@
     </Compile>
     <Compile Include="Models\BlogPostTag.cs" />
     <Compile Include="ViewModels\BlogPostSummary.cs" />
+    <Compile Include="ViewModels\BlogPostVm.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Data\AppUserManager.cs" />
@@ -302,8 +307,10 @@
   <ItemGroup>
     <Content Include="app\allPosts.js" />
     <Content Include="app\controllers\mainController.js" />
+    <Content Include="app\controllers\postController.js" />
     <Content Include="app\createPost.js" />
     <Content Include="app\mainApp.js" />
+    <Content Include="app\postApp.js" />
     <Content Include="app\postModel.js" />
     <Content Include="app\services\postService.js" />
     <Content Include="app\util.js" />

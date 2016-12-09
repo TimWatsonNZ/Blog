@@ -31,6 +31,13 @@ namespace Blog
                 "~/app/services/postService.js",
                 "~/app/controllers/mainController.js"
             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/post").Include(
+                "~/app/util.js",
+                "~/app/postApp.js",
+                "~/app/services/postService.js",
+                "~/app/controllers/postController.js"
+            ));
         }
     }
 }

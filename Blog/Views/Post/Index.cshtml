@@ -1,5 +1,4 @@
-﻿@Model Blog.Models.BlogPost
-
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +6,7 @@
 
 
 @section scripts{
-
+    @Scripts.Render("~/bundles/post")
 }
 
 @section styles{
@@ -34,18 +33,19 @@
     </style>
 }
 
-<div class="window" style="width:100%;height:100%;">
+<div class="window" style="width:100%;height:100%;" ng-app="postApp" ng-controller="postController">
     <div class="mainContent">
         <div class="topbar">
             <div> 
             </div>
         </div>
-		
         <div class="titleContainer">
-            <div id="title" class="title"></div>
+            <span id="title" class="title" style="font-size:25px;">@Model.Title</span>
+            <span style="font-size:25px;">@Model.Created.ToString("MM/dd/yyyy")</span>
         </div>
         <div style="height:90%;">
             <div id="content" class="content">
+                @Model.Content
             </div>
         </div>
         <div>

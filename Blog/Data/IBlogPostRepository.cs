@@ -23,5 +23,9 @@ namespace Blog.Data
         IEnumerable<BlogPost> GetLatestNPosts(int n);
 
         IEnumerable<BlogPost> GetPageOfPosts();
+
+        BlogPost GetNext(BlogPost post);
+
+        BlogPost GetPrevious(BlogPost post);
     }
 }
