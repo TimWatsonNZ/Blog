@@ -306,9 +306,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\allPosts.js" />
+    <Content Include="app\controllers\writePostController.js" />
     <Content Include="app\controllers\mainController.js" />
     <Content Include="app\controllers\postController.js" />
     <Content Include="app\createPost.js" />
+    <Content Include="app\writePostApp.js" />
     <Content Include="app\mainApp.js" />
     <Content Include="app\postApp.js" />
     <Content Include="app\postModel.js" />

@@ -52,19 +52,19 @@ namespace Blog.Api
         {
             return 1;
         }
-        
-        //public int Post([FromBody]BlogPost post)
-        //{
-        //    post.Created = DateTime.Now;
-        //    return _postRepo.SavePost(post);
-        //}
+
+        public int Post([FromBody]BlogPost post)
+        {
+            post.Created = DateTime.Now;
+            return _postRepo.SavePost(post);
+        }
 
         //public bool Put([FromBody]BlogPost post)
         //{
         //    _postRepo.UpdatePost(post);
         //    return true;
         //}
-        
+
         //public BlogPost GetLatest() 
         //{
         //    return _postRepo.GetLatestPost();

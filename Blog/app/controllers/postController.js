@@ -6,6 +6,16 @@
     app.controller(controllerId, ["postService", controller]);
 
     function controller(postService) {
-        console.log("post controller");
+        var self = this;
+        console.log("post");
+
+        self.gotoPost = function (postId) {
+            //  Navigate to post.
+            window.location = "/Post?id=" + postId;
+        }
+
+        this.test = function () {
+            console.log("postController");
+        }
     }
 })();

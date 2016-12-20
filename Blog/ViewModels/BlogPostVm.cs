@@ -18,10 +18,10 @@ namespace Blog.ViewModels
             Content = post.Content;
             Created = post.Created;
 
-            PreviousPostId = previous.BlogPostId;
-            PreviousPostTitle = previous.Title;
-            NextPostId = next.BlogPostId;
-            NextPostTitle = next.Title;
+            PreviousPostId = previous?.BlogPostId;
+            PreviousPostTitle = previous?.Title;
+            NextPostId = next?.BlogPostId;
+            NextPostTitle = next?.Title;
         }
 
         [JsonIgnore]
@@ -37,13 +37,13 @@ namespace Blog.ViewModels
         public DateTime Created { get; set; }
         
         [JsonProperty(PropertyName = "previousPostId")]
-        public int PreviousPostId { get; set; }
+        public int? PreviousPostId { get; set; }
 
         [JsonProperty(PropertyName = "previousPostTitle")]
         public string PreviousPostTitle { get; set; }
 
         [JsonProperty(PropertyName = "nextPostId")]
-        public int NextPostId { get; set; }
+        public int? NextPostId { get; set; }
 
         [JsonProperty(PropertyName = "nextPostTitle")]
         public string NextPostTitle { get; set; }

@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int nextId = Model.NextPostId ?? -1;
+    int prevId = Model.PreviousPostId ?? -1;
 }
 
 
@@ -33,7 +36,7 @@
     </style>
 }
 
-<div class="window" style="width:100%;height:100%;" ng-app="postApp" ng-controller="postController">
+<div class="window" style="width:100%;height:100%;" ng-app="postApp" ng-controller="postController as vm">
     <div class="mainContent">
         <div class="topbar">
             <div> 
@@ -42,10 +45,17 @@
         <div class="titleContainer">
             <span id="title" class="title" style="font-size:25px;">@Model.Title</span>
             <span style="font-size:25px;">@Model.Created.ToString("MM/dd/yyyy")</span>
+
+            <br /><br/>
         </div>
         <div style="height:90%;">
             <div id="content" class="content">
-                @Model.Content
+                @Html.Raw(@Model.Content)
+            </div>
+            <div id="footer">
+                <hr />
+                <a><span  ng-click="vm.gotoPost(@prevId)" style="cursor:pointer;float:left;">&lt;-- @Model.PreviousPostTitle</span></a>
+                <a><span ng-click="vm.gotoPost(@nextId)" style="cursor:pointer;float:right;">@Model.NextPostTitle --&gt;</span></a>
             </div>
         </div>
         <div>

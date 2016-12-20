@@ -38,5 +38,9 @@
             //  Navigate to post.
             window.location = "/Post?id=" + post.BlogPostId;
         }
+
+        this.test = function () {
+            console.log("mainController");
+        }
     }
 })();

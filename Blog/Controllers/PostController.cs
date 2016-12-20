@@ -40,7 +40,7 @@ namespace Blog.Controllers
             var nextPost = _postRepo.GetNext(post);
 
             var blogVm = new BlogPostVm(post, previousPost, nextPost);
-            return View(post);
+            return View(blogVm);
         }
     }
 }

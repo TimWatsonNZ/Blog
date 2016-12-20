@@ -11,7 +11,7 @@
         self.baseUrl = "/api";
 
         function test() {
-            alert("test");
+            return "test";
         }
 
         function getSummaries() {
@@ -29,16 +29,21 @@
         //    return $.get(self.base + "getLatest").promise();
         //}
 
-        //function createPost(postModel) {
-        //    if (postModel == null || !postModel.isValid()) {
-        //        return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
-        //    }
-        //    var deferred = $.Deferred();
+        function createPost(postModel) {
+            if (postModel == null || !postModel.isValid()) {
+                return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
+            }
+            var deferred = $.Deferred();
+            var requestUrl = "{base}/posts/Post".replace(/{base}/, self.baseUrl);
 
-        //    var postViewModel = { Title: "Test Title, please work" };
+            $http({
+                method: "POST",
+                url: requestUrl,
+                data: postModel
+            });
 
-        //    return deferred;
-        //}
+            return deferred;
+        }
 
         //function loadPageOfPosts() {
         //    return $.get(self.base + "getPageOfPosts").promise();
