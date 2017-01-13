@@ -12,30 +12,6 @@
     @Scripts.Render("~/bundles/post")
 }
 
-@section styles{
-    <style>
-		.mainContent{
-			position: absolute;
-			left: 0px;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			padding-top:10px;
-			padding-left:20px;
-            width: 80%;
-		}
-
-        .rightSidebar {
-            position: absolute;
-            left: 80%;
-            right: 0px;
-            bottom: 0px;
-            top: 50px;
-            width: 20%;
-        }
-    </style>
-}
-
 <div class="window" style="width:100%;height:100%;" ng-app="postApp" ng-controller="postController as vm">
     <div class="mainContent">
         <div class="topbar">
@@ -52,8 +28,7 @@
             <div id="content" class="content">
                 @Html.Raw(@Model.Content)
             </div>
-            <div id="footer">
-                <hr />
+            <div id="footer" class="footer">
                 <a><span  ng-click="vm.gotoPost(@prevId)" style="cursor:pointer;float:left;">&lt;-- @Model.PreviousPostTitle</span></a>
                 <a><span ng-click="vm.gotoPost(@nextId)" style="cursor:pointer;float:right;">@Model.NextPostTitle --&gt;</span></a>
             </div>

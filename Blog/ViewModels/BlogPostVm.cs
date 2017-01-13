@@ -13,10 +13,10 @@ namespace Blog.ViewModels
     {
         public BlogPostVm(BlogPost post, BlogPost previous, BlogPost next)
         {
-            BlogPostId = post.BlogPostId;
-            Title = post.Title;
-            Content = post.Content;
-            Created = post.Created;
+            BlogPostId = post?.BlogPostId ?? -1;
+            Title = post?.Title;
+            Content = post?.Content;
+            Created = post?.Created ?? DateTime.MinValue;
 
             PreviousPostId = previous?.BlogPostId;
             PreviousPostTitle = previous?.Title;

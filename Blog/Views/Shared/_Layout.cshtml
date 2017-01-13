@@ -22,18 +22,10 @@
                 
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav" style="text-align:left;">
-
-                            @if(Request.IsAuthenticated)
-                            {
-                                <li>@Html.ActionLink("Logout", "logout", "Account")</li>
-                            }else{
-                                <li>@Html.ActionLink("Login", "login", "Account")</li>
-                            }
-
                             <li>@Html.ActionLink("Main", "index", "Main")</li>
                             @if(Request.IsAuthenticated)
                             {
-                                <li>@Html.ActionLink("New Post", "Create", "Post")</li>
+                                <li>@Html.ActionLink("New Post", "Write", "Post")</li>
                             }
 
                         </ul>

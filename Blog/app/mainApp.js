@@ -1,1 +1,1 @@
-﻿var mainApp = angular.module("mainApp", ["service"]);
+﻿var mainApp = angular.module("mainApp", ["service", "util"]);

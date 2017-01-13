@@ -274,7 +274,10 @@
     <Compile Include="Migrations\201611021010052_v1.0.2.1.Designer.cs">
       <DependentUpon>201611021010052_v1.0.2.1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogPostTag.cs" />
+    <Compile Include="Migrations\201612292329013_v1.0.3.0.cs" />
+    <Compile Include="Migrations\201612292329013_v1.0.3.0.Designer.cs">
+      <DependentUpon>201612292329013_v1.0.3.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BlogPostSummary.cs" />
     <Compile Include="ViewModels\BlogPostVm.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -297,18 +300,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUser.cs" />
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\BlogPost.cs" />
-    <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\WritePostVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\allPosts.js" />
     <Content Include="app\controllers\writePostController.js" />
     <Content Include="app\controllers\mainController.js" />
-    <Content Include="app\controllers\postController.js" />
     <Content Include="app\createPost.js" />
     <Content Include="app\writePostApp.js" />
     <Content Include="app\mainApp.js" />
@@ -1145,7 +1146,6 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="test.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1163,7 +1163,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Views\Post\Create.cshtml" />
+    <Content Include="Views\Post\Write.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedOut.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
@@ -1194,6 +1194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611021010052_v1.0.2.1.resx">
       <DependentUpon>201611021010052_v1.0.2.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612292329013_v1.0.3.0.resx">
+      <DependentUpon>201612292329013_v1.0.3.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

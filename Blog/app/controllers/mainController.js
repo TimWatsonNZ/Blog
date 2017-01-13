@@ -3,9 +3,9 @@
     var app = angular.module("mainApp");
     var controllerId = "mainController";
 
-    app.controller(controllerId, ["postService", controller]);
+    app.controller(controllerId, ["postService", "utilService", controller]);
 
-    function controller(postService) {
+    function controller(postService, util) {
         var self = this;
 
         this.errorMessage = { hasError: false, message: "" };
@@ -32,6 +32,10 @@
 
         function populatePosts(postData) {
             self.posts = postData.data;
+        }
+
+        self.shortDate = function (datetime) {
+            return util.printDate(datetime);
         }
 
         self.gotoPost = function(post){

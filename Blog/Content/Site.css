@@ -9,4 +9,34 @@
     padding-right: 15px;
 }
 
+.mainContent{
+	position: absolute;
+	left: 33%;
+	right: 0px;
+	bottom: 0px;
+	top: 50px;
+	padding-top:15px;
+	padding-left:20px;
+    width: 33%;
+}
+
+.rightContainer{
+    padding-top:10px;
+}
+
+.rightSidebar{
+	position: absolute;
+	left: 80%;
+	right: 0px;
+	bottom: 0px;
+	top: 50px;
+	width: 20%;
+}	
+
+.footer{
+    position: absolute;
+    bottom: 10%;
+    width:100%;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */

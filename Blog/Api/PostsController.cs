@@ -18,34 +18,47 @@ namespace Blog.Api
         }
 
         [HttpGet]
-        public IEnumerable<BlogPost> Get(string orderBy = "created", int count = 10)
-        {
-            if (count == 0 || string.IsNullOrWhiteSpace(orderBy)) {
-                return new List<BlogPost>();
-            }
-
-            bool ascending = true;
-            if(orderBy[0] == '-')
-            {
-                ascending = false;
-            }
-
-            var posts = _postRepo.GetPosts(orderBy, count);
-
-            return posts;
-        }
-
-        [HttpGet]
-        public IEnumerable<BlogPostSummary> Summaries(string orderBy = "created", int? count = null)
+        public IHttpActionResult Get(string orderBy = "created", int count = 10)
         {
             if (count == 0 || string.IsNullOrWhiteSpace(orderBy))
             {
-                return new List<BlogPostSummary>();
+                return Ok(new List<BlogPostSummary>());
             }
-            
-            var posts = _postRepo.GetPosts(orderBy, count);
+            try
+            {
+                bool ascending = true;
+                if (orderBy[0] == '-')
+                {
+                    ascending = false;
+                }
 
-            return posts.Select(p => new BlogPostSummary(p));
+                var posts = _postRepo.GetPosts(orderBy, count);
+
+                return Ok(posts);
+            }
+            catch(Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult Summaries(string orderBy = "created", int? count = null)
+        {
+            if (count == 0 || string.IsNullOrWhiteSpace(orderBy))
+            {
+                return Ok(new List<BlogPostSummary>());
+            }
+            try
+            {
+                var posts = _postRepo.GetPosts(orderBy, count);
+
+                return Ok(posts.Select(p => new BlogPostSummary(p)));
+            }
+            catch(Exception)
+            {
+                return InternalServerError();
+            }
         }
 
         public int Test()
@@ -53,10 +66,24 @@ namespace Blog.Api
             return 1;
         }
 
-        public int Post([FromBody]BlogPost post)
+        public IHttpActionResult Post([FromBody]BlogPost post)
         {
-            post.Created = DateTime.Now;
-            return _postRepo.SavePost(post);
+            if(post == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                post.Created = DateTime.Now;
+                _postRepo.SavePost(post);
+
+                return Ok(post);
+            }
+            catch(Exception)
+            {
+                return InternalServerError();
+            }
         }
 
         //public bool Put([FromBody]BlogPost post)

@@ -23,15 +23,5 @@ namespace Blog.Models
 
         [JsonProperty(PropertyName = "created")]
         public DateTime Created { get; set; }
-
-        [JsonProperty(PropertyName = "categoryId")]
-        public int? CategoryId { get; set; }
-
-        [JsonProperty(PropertyName = "category")]
-        [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
-
-        [JsonProperty(PropertyName = "tags")]
-        public virtual List<Tag> Tags { get; set; }
     }
 }

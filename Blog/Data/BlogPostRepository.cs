@@ -107,7 +107,7 @@ namespace Blog.Data
 
         public BlogPost GetPrevious(BlogPost post)
         {
-            var before = _context.Posts.Where(p => p.Created < post.Created)
+            var before = _context.Posts.Where(p => p != null && p.Created < post.Created)
                                        .OrderByDescending(p => p.Created)
                                        .Take(1).SingleOrDefault();
             return before;
@@ -115,10 +115,10 @@ namespace Blog.Data
 
         public BlogPost GetNext(BlogPost post)
         {
-            var before = _context.Posts.Where(p => p.Created > post.Created)
+            var next = _context.Posts.Where(p => p != null && p.Created > post.Created)
                                        .OrderBy(p => p.Created)
                                        .Take(1).SingleOrDefault();
-            return before;
+            return next;
         }
     }
 }

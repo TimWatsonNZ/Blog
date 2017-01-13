@@ -22,9 +22,8 @@
         this.textToHtmlContentIntervalId = -1;
         this.htmlToTextContentIntervalId = -1;
 
-        init();
-
-        function init() {
+        this.init = function(isUpdate) {
+            console.log("is update: " + isUpdate);
             document.getElementById("textContent").contentWindow.document.designMode = "on";
             document.getElementById("textContent").contentWindow.close();
 
@@ -47,11 +46,15 @@
         }
 
         this.createModel = function () {
-            return new postModel(self.title, self.htmlContent, [], "");
+            return new postModel(self.title, $("#htmlContent").val(), [], "");
         }
 
         this.updatePost = function () {
             console.log("UpdatePost");
+        }
+
+        this.test = function (v) {
+            console.log(v);
         }
 
         this.startHtmlToTextContentCopy = function () {

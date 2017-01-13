@@ -19,9 +19,10 @@ namespace Blog.Controllers
 
         // GET: CreatePost
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Write(bool update = false)
         {
-            return View();
+            var writePostVm = new WritePostVm() { IsUpdate = update };
+            return View(writePostVm);
         }
         
         //  To update

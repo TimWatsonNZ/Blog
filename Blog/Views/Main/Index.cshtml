@@ -5,35 +5,7 @@
 }
 
 @section scripts{
-    @Scripts.Render("~/bundles/main");
-}
-
-@section styles{
-	<style>
-        .mainContent{
-			position: absolute;
-			left: 0px;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			padding-top:15px;
-			padding-left:20px;
-            width: 80%;
-		}
-
-        .rightContainer{
-            padding-top:10px;
-        }
-
-		.rightSidebar{
-			position: absolute;
-			left: 80%;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			width: 20%;
-		}		
-	</style>
+    @Scripts.Render("~/bundles/main")
 }
 
 <div class="window" ng-app="mainApp" ng-controller="mainController as vm">
@@ -46,7 +18,7 @@
             <div ng-show="vm.errorMessage.hasError">{{vm.errorMessage.message}}</div>
         
             <div ng-repeat="post in vm.posts | orderBy: created">
-                <a><div ng-click="vm.gotoPost(post)" style="cursor:pointer;">{{post.title}}</div></a>
+                <a><span ng-click="vm.gotoPost(post)" style="font-size:20px;cursor:pointer;">{{vm.shortDate(post.created)}} - {{post.title}}</span></a>
             </div>
         </div>
     </div>
