@@ -29,7 +29,7 @@ namespace Blog.Controllers
                 return View();
             }
             
-            if(model.Email == "tim.watson.nz@gmail.com" && model.Password == "redchimneygreentree")
+            if(model.Email == IdentityConfig.UserEmail && model.Password == IdentityConfig.UserPassword)
             {
                 var identity = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.Name, "Tim"),

@@ -41,6 +41,7 @@ namespace Blog.Data
                 return false;
 
             toUpdate.Content = post.Content;
+            toUpdate.Title = post.Title;
 
             _context.SaveChanges();
 

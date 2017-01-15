@@ -12,7 +12,6 @@ namespace Blog.Models
     public class BlogPost
     {
         [Key]
-        [JsonIgnore]
         public int BlogPostId { get; set; }
 
         [JsonProperty(PropertyName = "title")]

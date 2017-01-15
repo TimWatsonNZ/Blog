@@ -8,5 +8,6 @@ namespace Blog.ViewModels
     public class WritePostVm
     {
         public bool IsUpdate { get; set; }
+        public BlogPostVm BlogPost { get; set; }
     }
 }

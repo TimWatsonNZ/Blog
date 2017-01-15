@@ -1,77 +1,28 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
+    var isUpdate = Model.IsUpdate;
+    var blogId = Model.BlogPost.BlogPostId;
+    var title = Model.BlogPost.Title;
+    var content = Model.BlogPost.Content;
 }
 
 @section scripts{
     @Scripts.Render("~/bundles/writePost")
 }
 
-@section styles{
-    <style>
-		.mainContent{
-			position: absolute;
-			left: 0px;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			padding-top:10px;
-			padding-left:20px;
-            width: 80%;
-		}
-
-		.rightSidebar{
-			position: absolute;
-			left: 80%;
-			right: 0px;
-			bottom: 0px;
-			top: 50px;
-			width: 20%;
-		}		
-
-        .createTitleContainer{
-            width: 100%;
-        }
-
-        .createTitle {
-            font-weight: 600;
-            font-size: 28px;
-            border: none;
-            font-family: Merriweather;
-            color: #2e4453;
-            resize:none;
-        }
-
-        .topbar{
-            text-align:center;
-        }
-
-		.createContent{
-			resize:none;
-			width:100%;
-			height:40%;
-		}
-
-        .createControls{
-            text-align:left;
-        }
-    </style>
-}
 
 <div class="window" style="width:100%;height:100%;" 
      ng-app="writePostApp" 
      ng-controller="writePostController as vm"
-     ng-init="vm.init(@Json.Encode(Model.IsUpdate))">
+     ng-init="vm.init(@Json.Encode(isUpdate), @Json.Encode(blogId), @Json.Encode(title), @Json.Encode(content))">
     
     <div class="mainContent">
         <div class="topbar">
             <div class="createControls">
                 <button ng-click="vm.startTextToHtmlContentCopy()">Text</button>
                 <button ng-click="vm.startHtmlToTextContentCopy()">Html</button>
-
-
-                <div ng-click="vm.test('')">sdfsdf</div>
             </div>
         </div>
 		
@@ -88,7 +39,7 @@
     <div class="rightSidebar">
         <div style="padding:20px;">
             <button ng-show="vm.isCreating" ng-click="vm.createPost()">Create</button>
-            <button ng-show="!vm.isCreating" ng-click="vm.updatePost()">Create</button>
+            <button ng-show="!vm.isCreating" ng-click="vm.updatePost()">Update</button>
             <div id="message"></div>
         </div>
     </div>

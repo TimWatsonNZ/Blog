@@ -86,6 +86,26 @@ namespace Blog.Api
             }
         }
 
+        [HttpPut]
+        public IHttpActionResult Put([FromBody]BlogPost post)
+        {
+            if (post == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _postRepo.UpdatePost(post);
+
+                return Ok(post);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
         //public bool Put([FromBody]BlogPost post)
         //{
         //    _postRepo.UpdatePost(post);

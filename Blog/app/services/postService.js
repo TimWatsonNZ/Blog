@@ -41,8 +41,25 @@
             return deferred;
         }
 
+        function updatePost(postModel) {
+            if (postModel == null || !postModel.isValid()) {
+                return new returnWrapper(null, true, ErrorTypes.InvalidParameters);
+            }
+            var deferred = $.Deferred();
+            var requestUrl = "{base}/Posts/Put".replace(/{base}/, self.baseUrl);
+
+            $http({
+                method: "PUT",
+                url: requestUrl,
+                data: postModel
+            });
+
+            return deferred;
+        }
+
         return {
             createPost: createPost,
+            updatePost: updatePost,
             getSummaries: getSummaries,
             test: test
         };

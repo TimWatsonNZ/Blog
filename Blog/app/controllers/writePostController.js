@@ -8,28 +8,34 @@
     function controller(postService) {
         var self = this;
 
-        console.log("WritePost");
-
         this.isCreating = true;
         this.isTextActive = true;
 
         this.title = "";
-        this.textContent = "";
-        this.htmlContent = "";
+        this.blogId = -1;
 
         this.message = "";
 
         this.textToHtmlContentIntervalId = -1;
         this.htmlToTextContentIntervalId = -1;
 
-        this.init = function(isUpdate) {
-            console.log("is update: " + isUpdate);
+        this.init = function(isUpdate, blogId, title, content) {
             document.getElementById("textContent").contentWindow.document.designMode = "on";
             document.getElementById("textContent").contentWindow.close();
 
             var edit = document.getElementById("textContent").contentWindow;
             edit.focus();
 
+            this.isCreating = !isUpdate;
+            this.blogId = blogId || "";
+            this.title = title || "";
+            var textContent = content || "";
+
+            this.setTextContent(textContent);
+            this.setHtmlContent(this.getTextContent());
+
+            //  Checks what is focused every second, work around for focus event listener
+            //  not working with iframes.
             setInterval(checkFocus, 1000);
         }
 
@@ -37,7 +43,6 @@
             var model = self.createModel();
             var createResponse = postService.createPost(model).
                 then(function (resp) {
-
                     self.message = "Post created successfully";
                     self.isCreating = false;
                 }, function (err) {
@@ -46,15 +51,17 @@
         }
 
         this.createModel = function () {
-            return new postModel(self.title, $("#htmlContent").val(), [], "");
+            if (this.blogId > 0){
+                return new postModel(self.title, self.getHtmlContent(), [], "", this.blogId);
+            }
+
+            return new postModel(self.title, self.getHtmlContent(), [], "");
         }
 
         this.updatePost = function () {
-            console.log("UpdatePost");
-        }
+            var model = self.createModel();
 
-        this.test = function (v) {
-            console.log(v);
+            postService.updatePost(model);
         }
 
         this.startHtmlToTextContentCopy = function () {
@@ -64,7 +71,7 @@
             }
 
             self.htmlToTextContentIntervalId = setInterval(function () {
-                $("#textContent").contents().find("body").html($("#htmlContent").val());
+                self.setTextContent(self.getHtmlContent());
             }, 1000);
 
             self.isTextActive = false;
@@ -77,10 +84,26 @@
             }
 
             self.textToHtmlContentIntervalId = setInterval(function () {
-                $("#htmlContent").val($("#textContent").contents().find("body").html());
+                self.setHtmlContent(self.getTextContent);
             }, 1000);
 
             self.isTextActive = true;
+        }
+
+        this.getTextContent = function () {
+            return $("#textContent").contents().find("body").html();
+        }
+
+        this.getHtmlContent = function() {
+            return $("#htmlContent").val();
+        }
+
+        this.setTextContent = function (text) {
+            $("#textContent").contents().find("body").html(text);
+        }
+
+        this.setHtmlContent = function (text) {
+            $("#htmlContent").val(text);
         }
 
         function checkFocus() {

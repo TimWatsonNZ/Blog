@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -7,6 +6,8 @@ using Blog.Models;
 using Owin;
 using Blog.Data;
 using Microsoft.Owin.Security.Cookies;
+using System.Configuration;
+using System;
 
 namespace Blog
 {
@@ -14,6 +15,9 @@ namespace Blog
 
     public class IdentityConfig
     {
+        public static string UserEmail { get; private set; } = Guid.NewGuid().ToString();
+        public static string UserPassword { get; private set; } = Guid.NewGuid().ToString();
+
         public void Configuration(IAppBuilder app) 
         {
             app.CreatePerOwinContext(() => new DbContext());
@@ -26,6 +30,11 @@ namespace Blog
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login")
             });
+
+            var appSettings = ConfigurationManager.AppSettings;
+
+            UserEmail = appSettings["UserEmail"].ToString();
+            UserPassword = appSettings["UserPassword"].ToString();
         }
     }
 }

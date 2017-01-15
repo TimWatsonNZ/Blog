@@ -1,9 +1,6 @@
 ﻿using Blog.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Blog.ViewModels
 {
@@ -22,6 +19,19 @@ namespace Blog.ViewModels
             PreviousPostTitle = previous?.Title;
             NextPostId = next?.BlogPostId;
             NextPostTitle = next?.Title;
+        }
+
+        public BlogPostVm(BlogPost post)
+        {
+            BlogPostId = post?.BlogPostId ?? -1;
+            Title = post?.Title;
+            Content = post?.Content;
+            Created = post?.Created ?? DateTime.MinValue;
+
+            PreviousPostId = null;
+            PreviousPostTitle = null;
+            NextPostId = null;
+            NextPostTitle = null;
         }
 
         [JsonIgnore]
