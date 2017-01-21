@@ -3,9 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var isUpdate = Model.IsUpdate;
-    var blogId = Model.BlogPost.BlogPostId;
-    var title = Model.BlogPost.Title;
-    var content = Model.BlogPost.Content;
+    var blogId = Model.BlogPost?.BlogPostId;
+    var title = Model.BlogPost?.Title;
+    var content = Model.BlogPost?.Content;
 }
 
 @section scripts{
@@ -40,7 +40,7 @@
         <div style="padding:20px;">
             <button ng-show="vm.isCreating" ng-click="vm.createPost()">Create</button>
             <button ng-show="!vm.isCreating" ng-click="vm.updatePost()">Update</button>
-            <div id="message"></div>
+            <div id="message">{{vm.message}}</div>
         </div>
     </div>
 </div>

@@ -1,1 +1,1 @@
-﻿var postApp = angular.module("postApp", ["service"]);
+﻿var postApp = angular.module("postApp", ["postService"]);

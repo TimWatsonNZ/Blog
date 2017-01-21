@@ -60,8 +60,13 @@
 
         this.updatePost = function () {
             var model = self.createModel();
-
-            postService.updatePost(model);
+            postService.updatePost(model).
+                then(function(resp){
+                    self.message = "Post Updated";
+                },
+                function(){
+                    self.message = "There was an error updating the post.";
+                });
         }
 
         this.startHtmlToTextContentCopy = function () {

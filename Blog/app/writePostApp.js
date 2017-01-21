@@ -1,1 +1,1 @@
-﻿var writePostApp = angular.module("writePostApp", ["service"]);
+﻿var writePostApp = angular.module("writePostApp", ["postService"]);
