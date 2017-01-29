@@ -11,24 +11,28 @@
     </head>
 
     <body>
-        <div class="navbar navbar-fixed-top" style="background-color:white;">
-            <div>
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav" style="text-align:left;">
-                            <li>@Html.ActionLink("Main", "index", "Main")</li>
-                            @if(Request.IsAuthenticated)
-                            {
-                                <li>@Html.ActionLink("New Post", "Write", "Post")</li>
-                            }
+        <div class="blog-masthead">
+            <div class="container">
+                <div class="navbar navbar-fixed-top" style="background-color:white;">
+                    <div>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
 
-                        </ul>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav" style="text-align:left;">
+                                    <li>@Html.ActionLink("Main", "index", "Main")</li>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <li>@Html.ActionLink("New Post", "Write", "Post")</li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

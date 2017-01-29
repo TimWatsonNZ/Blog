@@ -57,5 +57,8 @@ namespace Blog.ViewModels
 
         [JsonProperty(PropertyName = "nextPostTitle")]
         public string NextPostTitle { get; set; }
+
+        [JsonProperty(PropertyName = "summary")]
+        public string Summary { get; set; } = "";
     }
 }

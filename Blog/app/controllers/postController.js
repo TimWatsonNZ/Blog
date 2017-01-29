@@ -11,7 +11,9 @@
 
         self.gotoPost = function (postId) {
             //  Navigate to post.
-            window.location = "/Post?id=" + postId;
+            if (postId > 0) {
+                window.location = "/Post?id=" + postId;
+            }
         }
 
         this.editPost = function (postId) {

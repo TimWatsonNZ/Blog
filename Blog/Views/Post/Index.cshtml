@@ -13,27 +13,54 @@
 }
 
 <div class="window" style="width:100%;height:100%;" ng-app="postApp" ng-controller="postController as vm">
-    <div class="mainContent">
-        <div class="topbar">
-        </div>
-        <div class="titleContainer">
-            <span id="title" class="title" style="font-size:25px;">@Model.Title</span>
-            <span style="font-size:25px;">@Model.Created.ToString("MM/dd/yyyy")</span>
-            <a style="padding-left:10px;cursor:pointer;" ng-click="vm.editPost(@Model.BlogPostId)"> - Edit</a>
-
-            <br /><br/>
-        </div>
-        <div style="height:90%;">
-            <div id="content" class="content">
-                @Html.Raw(@Model.Content)
-            </div>
-            <div id="footer" class="footer">
-                <a><span  ng-click="vm.gotoPost(@prevId)" style="cursor:pointer;float:left;">&lt;-- @Model.PreviousPostTitle</span></a>
-                <a><span ng-click="vm.gotoPost(@nextId)" style="cursor:pointer;float:right;">@Model.NextPostTitle --&gt;</span></a>
-            </div>
-        </div>
-        <div>
-            <label id="message"></label>
+    
+    <div class="blog-header">
+        <div class="container">
+            <h2 class="blog-title">The Long Road</h2>
+            <p class="lead blog-description">Blog about the road to becoming a better programmer</p>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post">
+                    <h2 class="blog-post-title">@Model.Title</h2>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a style="padding-left:10px;cursor:pointer;" ng-click="vm.editPost(@Model.BlogPostId)"> - Edit</a>
+                        }
+                    <p class="blog-post-meta">
+                        @Model.Created.ToString("MM/dd/yyyy")
+                    </p>
+                    <p>@Model.Summary</p>
+                    <hr />
+                    @Html.Raw(@Model.Content)
+                    <blockquoote></blockquoote>
+                </div>
+                <nav class="blog-pagination">
+                    @if (@prevId > 0)
+                    {
+                         <a class="btn btn-outline-primary" href="#" ng-click="vm.gotoPost(@prevId)">&lt; @Model.PreviousPostTitle</a>
+                    }
+                    @if (@nextId > 0)
+                    {
+                        <a class="btn btn-outline-secondary" href="#" ng-click="vm.gotoPost(@nextId)">@Model.NextPostTitle &gt;</a>
+                    }
+                    
+                </nav>
+            </div>
+            <div class="col-sm-3 offset-sm-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Blah blah</p>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Archives</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="blog-footer">
+        @*<p>Back to top</p>*@
+    </footer>
 </div>
