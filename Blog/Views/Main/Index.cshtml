@@ -9,12 +9,25 @@
 }
 
 <div class="window" ng-app="mainApp" ng-controller="mainController as vm">
-    <div id="main">
-        <div id="mainContent" class="mainContent">
-            <div ng-show="vm.errorMessage.hasError" ng-cloak>{{vm.errorMessage.message}}</div>
-        
-            <div ng-repeat="post in vm.posts | orderBy: created">
-                <a><span ng-click="vm.gotoPost(post)" style="font-size:20px;cursor:pointer;" ng-cloak>{{vm.shortDate(post.created)}} - {{post.title}}</span></a>
+    <div class="blog-header">
+        <div class="container">
+            <h2 class="blog-title">The Long Road</h2>
+            <p class="lead blog-description">Blog about the road to becoming a better programmer</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 blog-main">
+                <div id="main">
+                    <div id="mainContent" class="mainContent">
+                        <div ng-show="vm.errorMessage.hasError" ng-cloak>{{vm.errorMessage.message}}</div>
+
+                        <div ng-repeat="post in vm.posts | orderBy: created">
+                            <a><span ng-click="vm.gotoPost(post)" style="font-size:20px;cursor:pointer;" ng-cloak>{{vm.shortDate(post.created)}} - {{post.title}}</span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
